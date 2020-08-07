@@ -1,0 +1,8 @@
+echo "$(date) $(cat /proc/meminfo | grep "MemFree" | tr -s " " | xargs echo)" >> memorylog.txt
+
+1. cat /proc/meminfo will print out memory status
+2. grep "MemFree" will return the lines that contain MemFree
+3. tr -s " " will replace all the repeating, adjacent instances of the character " " with just a single blank
+4. xargs echo will accept the stdin from the pipeline as its parameter
+5. "$() $()" will concatenate the result of those two commands as one string
+6. echo --- >> memorylog.txt will append the output of 'echo ---' to memorylog.txt as a new line
